@@ -4,6 +4,8 @@ class Elf:
   def __init__(self,id):
     self.id = id
     self.calories = 0
+  def __str__(self):
+    return f'{self.id} has {self.calories}'
 
 input_file = open('day1/input1.txt','r')
 input_lines = input_file.readlines()
@@ -27,4 +29,13 @@ for line in input_lines:
   else:
     cur_elf.calories += int(line)
 
-print("Elf {} has the most calories, with {}\n".format(max_cal_elf.id,max_cal_elf.calories))
+# Got our list of elf objects
+# Sort and find the top 3
+sorted_elves = sorted(elves, key=lambda x: x.calories, reverse=True)[0:3]
+
+top_3_total = 0
+for elf in sorted_elves:
+  top_3_total += elf.calories
+  print(elf)
+
+print(f'top 3 total: {top_3_total}')
