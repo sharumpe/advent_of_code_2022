@@ -8,7 +8,6 @@ class Elf:
 input_file = open('day1/input1.txt','r')
 input_lines = input_file.readlines()
 
-elves = []
 cur_elf = Elf(0)
 max_cal_elf = cur_elf
 
@@ -22,8 +21,7 @@ for line in input_lines:
       max_cal_elf = cur_elf
 
     # put the previous elf in the list and start on a new one
-    elves.append(cur_elf)
-    cur_elf = Elf(len(elves))
+    cur_elf = Elf(cur_elf.id + 1)
   else:
     cur_elf.calories += int(line)
 
